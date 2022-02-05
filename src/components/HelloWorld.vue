@@ -18,7 +18,7 @@
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank" rel="noopener">unit-jest</a></li>
     </ul>
-    <h3>Essential Links</h3>
+    <h3 @click="clearPokemonDetails()">Essential Links</h3>
     <ul>
       <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
@@ -46,11 +46,13 @@ export default {
     msg: String
   },
   methods: {
-    ...mapActions(["fetchPokemon", "nextPage"]),
+    ...mapActions(["fetchPokemon", "nextPage", "fetchTotalPokemon", "fetchPokemonDetails", "clearPokemonDetails"]),
   },
   computed: mapGetters(["getPage"]),
   created() {
+    this.fetchTotalPokemon();
     this.fetchPokemon(this.getPage);
+    this.fetchPokemonDetails(1);
   }
 }
 </script>
