@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md uppercase font-bold text-white py-1" :class="classColor[typeName]">
+  <div class="rounded-md uppercase font-bold py-1" :class="classColor[typeName]">
     <h4>{{typeName}}</h4>
   </div>
 </template>
@@ -15,24 +15,24 @@ export default {
   data() {
     return {
       classColor: {
-        fire: 'bg-red-500',
-        grass: 'bg-green-400',
-        poison: 'bg-purple-800',
-        normal: 'text-black border-2 border-black',
-        fighting: 'bg-pink-300',
-        flying: 'bg-blue-200',
-        ground: 'bg-yellow-600',
-        rock: 'bg-gray-400',
-        bug: 'bg-green-300',
-        ghost: 'bg-indigo-900',
+        fire: 'bg-red-500 text-white',
+        grass: 'bg-green-400 text-white',
+        poison: 'bg-purple-800 text-white',
+        normal: 'text-black ring-2 ring-black',
+        fighting: 'bg-pink-300 text-white',
+        flying: 'bg-blue-200 text-black',
+        ground: 'bg-yellow-600 text-white',
+        rock: 'bg-gray-400 text-white',
+        bug: 'bg-green-300 text-white',
+        ghost: 'bg-indigo-900 text-white',
         steel: 'bg-gray-300 text-black',
         electric: 'bg-yellow-300 text-black',
-        dragon: 'bg-pink-800',
-        dark: 'bg-black',
-        fairy: 'bg-pink 200 text-black',
+        dragon: 'bg-pink-800 text-white',
+        dark: 'bg-black text-white',
+        fairy: 'bg-pink-200 text-black',
         ice: 'bg-indigo-200 text-black',
-        psychic: 'bg-pink-600',
-        shadow: 'bg-gray-700'
+        psychic: 'bg-pink-600 text-white',
+        shadow: 'bg-gray-700 text-white'
       }
     };
   }

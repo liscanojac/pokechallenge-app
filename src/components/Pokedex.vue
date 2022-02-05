@@ -6,35 +6,30 @@
     <div :key="pokemon.id" class="flex justify-center" v-for="pokemon in getPokemon">
       <PokeCard :pokemon="pokemon" />
     </div>
-    <!-- <button @click="() => {
-      nextPage();
-      fetchPokemon(getPage);
-      }">
-      Next</button>
-    <button @click="() => {
-      lastPage();
-      fetchPokemon(getPage);
-      }">
-      Last</button> -->
+    <div class="grid grid-cols-4 text-center">
+      <PageButton buttonType="next" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PokeCard from './PokeCard.vue';
+import PageButton from './PageButton.vue';
 
 
 export default {
   name: 'Pokedex',
   components: {
-    PokeCard
+    PokeCard,
+    PageButton,
   },
   props: {
     msg: String,
     msgTitle: String,
   },
   methods: {
-    ...mapActions(["fetchPokemon", "nextPage", "prevPage", "lastPage", "fetchTotalPokemon", "clearPokemonDetails"]),
+    ...mapActions(["fetchPokemon", "fetchTotalPokemon", "clearPokemonDetails"]),
   },
   computed: mapGetters(["getPage", "getPokemon"]),
   created() {
