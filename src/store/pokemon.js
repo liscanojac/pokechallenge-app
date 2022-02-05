@@ -55,6 +55,12 @@ const actions = {
   prevPage({ commit }) {
     commit("setPrevPage");
   },
+  initialPage({ commit }) {
+    commit("setInitialPage");
+  },
+  lastPage({ commit }) {
+    commit("setLastPage");
+  },
   async fetchTotalPokemon({ commit }) {
 
     try {
@@ -125,6 +131,8 @@ const mutations = {
   setTotalPages: (state, totalPokemon) => state.totalPages = Math.ceil(totalPokemon / state.page_limit),
   setPokemonDetails: (state, pokemon) => state.pokemonDetails = pokemon,
   setPokemonDetailsCleared: (state) => state.pokemonDetails = {},
+  setInitialPage: (state) => state.page = 1,
+  setLastPage: (state) => state.page = state.totalPages,
 }
 
 export default {
