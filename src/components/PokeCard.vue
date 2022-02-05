@@ -19,17 +19,24 @@
       <div>
         <h3>{{pokemon.weight}} lbs.</h3>
       </div>
-      <div :key="type.url" v-for="type in pokemon.types">{{type.name}}</div>
+      <div :key="type.url" v-for="type in pokemon.types">
+        <Type :typeName="type.name" />
+      </div>
     </div>
     <img class="w-20 mb-4 order-1 md:order-2 md:mb-0 md:mr-8" :src="pokemon.gif_front" alt="poke-gif">
   </div>
 </template>
 
 <script>
+import Type from './Type.vue';
+
 export default {
   name: 'PokeCard',
   props: {
     pokemon: Object,
+  },
+  components: {
+    Type
   }
 }
 </script>
