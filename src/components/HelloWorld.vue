@@ -6,7 +6,11 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
+    <h3 @click="() => {
+      nextPage();
+      fetchPokemon(getPage)
+      }"
+      >Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
@@ -34,10 +38,19 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex"
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    ...mapActions(["fetchPokemon", "nextPage"]),
+  },
+  computed: mapGetters(["getPage"]),
+  created() {
+    this.fetchPokemon(this.getPage);
   }
 }
 </script>
