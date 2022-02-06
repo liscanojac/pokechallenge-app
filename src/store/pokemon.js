@@ -42,6 +42,8 @@ const actions = {
         svg_image: pokemonFullDetails.sprites.other.dream_world.front_default,
         gif_front: pokemonFullDetails['sprites']['versions']['generation-v']['black-white']['animated']['front_default'],
         gif_back: pokemonFullDetails['sprites']['versions']['generation-v']['black-white']['animated']['back_default'],
+        image_front: pokemonFullDetails.sprites.front_default,
+        image_back: pokemonFullDetails.sprites.back_default,
         types: pokemonFullDetails.types.map(type => type.type),
         weight: pokemonFullDetails.weight,
         height: pokemonFullDetails.height,
@@ -129,8 +131,16 @@ const actions = {
 
 const mutations = {
   setPokemon: (state, pokemon) => (state.pokemon = pokemon),
-  setNextPage: (state) => state.page = state.page + 1,
-  setPrevPage: (state) => state.page = state.page--,
+  setNextPage: (state) => {
+    if (state.page < state.totalPages) {
+      state.page = state.page + 1;
+    }
+  },
+  setPrevPage: (state) => {
+    if (state.page > 1) {
+      state.page = state.page -1;
+    }
+  },
   setTotalPokemon: (state, totalPokemon) => state.totalPokemon = totalPokemon,
   setTotalPages: (state, totalPokemon) => state.totalPages = Math.ceil(totalPokemon / state.page_limit),
   setPokemonDetails: (state, pokemon) => state.pokemonDetails = pokemon,

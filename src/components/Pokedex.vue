@@ -6,8 +6,11 @@
     <div :key="pokemon.id" class="flex justify-center" v-for="pokemon in getPokemon">
       <PokeCard :pokemon="pokemon" />
     </div>
-    <div class="grid grid-cols-4 text-center">
-      <PageButton buttonType="next" />
+    <div class="grid grid-cols-4 text-center w-full md:w-3/4 mx-auto">
+      <FirstPageButton buttonType="firstPage" />
+      <PrevButton buttonType="prevPage" />
+      <NextButton buttonType="nextPage" />
+      <LastPageButton buttonType="lastPage" />
     </div>
   </div>
 </template>
@@ -15,14 +18,20 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import PokeCard from './PokeCard.vue';
-import PageButton from './PageButton.vue';
+import NextButton from './NextButton.vue';
+import PrevButton from './PrevButton.vue';
+import LastPageButton from './LastPageButton.vue';
+import FirstPageButton from './FirstPageButton.vue';
 
 
 export default {
   name: 'Pokedex',
   components: {
     PokeCard,
-    PageButton,
+    NextButton,
+    PrevButton,
+    LastPageButton,
+    FirstPageButton,
   },
   props: {
     msg: String,
@@ -31,7 +40,7 @@ export default {
   methods: {
     ...mapActions(["fetchPokemon", "fetchTotalPokemon", "clearPokemonDetails"]),
   },
-  computed: mapGetters(["getPage", "getPokemon"]),
+  computed: mapGetters(["getPokemon"]),
   created() {
     this.fetchTotalPokemon();
     this.fetchPokemon();

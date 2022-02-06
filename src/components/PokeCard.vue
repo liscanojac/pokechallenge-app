@@ -23,7 +23,7 @@
         <Type :typeName="type.name" />
       </div>
     </div>
-    <img class="w-20 mb-4 order-1 md:order-2 md:mb-0 md:mr-8" :src="pokemon.gif_front" alt="poke-gif">
+    <img class="w-20 mb-4 order-1 md:order-2 md:mb-0 md:mr-8" :src="pokemon.gif_front || pokemon.image_front" alt="poke-gif">
   </div>
 </template>
 

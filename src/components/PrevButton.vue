@@ -1,6 +1,6 @@
 <template>
-  <button class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4" :class="getLoading && 'cursor-wait'" @click="{
-    nextPage();
+  <button class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4 ml-2 mr-1" :class="getLoading && 'cursor-wait'" @click="{
+    prevPage();
     fetchPokemon(getPage);
     }">{{buttonType}}</button>
 </template>
@@ -9,7 +9,7 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: 'PageButton',
+  name: 'PrevButton',
   props: {
     buttonType: String,
   },
@@ -19,7 +19,3 @@ export default {
   computed: mapGetters(["getPage", "getLoading"])
 }
 </script>
-
-<style>
-
-</style>
