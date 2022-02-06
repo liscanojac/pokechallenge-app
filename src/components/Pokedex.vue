@@ -40,10 +40,11 @@ export default {
   methods: {
     ...mapActions(["fetchPokemon", "fetchTotalPokemon", "clearPokemonDetails"]),
   },
-  computed: mapGetters(["getPokemon"]),
+  computed: mapGetters(["getPokemon", "getPage"]),
   created() {
     this.fetchTotalPokemon();
-    this.fetchPokemon();
+    this.fetchPokemon(this.getPage);
+    this.clearPokemonDetails();
   }
 }
 </script>

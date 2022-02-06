@@ -15,6 +15,7 @@ const getters = {
   getPage: (state) => state.page,
   getTotalPages: (state) => state.totalPages,
   getLoading: (state) => state.loading,
+  getPokemonDetails: (state) => state.pokemonDetails,
 };
 
 const actions = {
@@ -107,6 +108,7 @@ const actions = {
       id: pokemonFullDetails.id,
       abilities: pokemonFullDetails.abilities.map(ability => ability.ability),
       svg_image: pokemonFullDetails.sprites.other.dream_world.front_default,
+      official_artwork: pokemonFullDetails['sprites']['other']['official-artwork']['front_default'],
       gif_front: pokemonFullDetails['sprites']['versions']['generation-v']['black-white']['animated']['front_default'],
       gif_back: pokemonFullDetails['sprites']['versions']['generation-v']['black-white']['animated']['back_default'],
       types: pokemonFullDetails.types.map(type => type.type),

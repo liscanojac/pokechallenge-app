@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md uppercase font-bold p-1" :class="classColor[typeName]">
+  <div class="rounded-md uppercase font-bold p-1 text-center" :class="classColor[typeName]">
     <h4>{{typeName}}</h4>
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   name: 'Type',
   props: {
-    typeName: String
+    typeName: String,
   },
   data() {
     return {
@@ -39,7 +39,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
