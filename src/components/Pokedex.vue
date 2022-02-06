@@ -1,7 +1,14 @@
 <template>
   <div class="w-full bg-emerald-400 rounded-xl p-4">
     <div class="flex justify-center mb-2">
-      <h1 class="w-full md:w-3/4 lg:w-1/2 bg-white text-center font-pokedex-title text-2xl border-4 border-gray-400 py-2">{{msg}} <span class="uppercase">{{msgTitle}}</span></h1>
+      <div class="w-full md:w-3/4 lg:w-1/2 bg-white text-center border-4 border-gray-400">
+        <h1 class="font-pokedex-title text-2xl py-2">
+          {{msg}} <span class="uppercase">{{msgTitle}}</span>
+        </h1>
+        <div class="flex justify-center">
+          <LanguageToggler />
+        </div>
+      </div>
     </div>
     <div :key="pokemon.id" class="flex justify-center" v-for="pokemon in getPokemon">
       <PokeCard :pokemon="pokemon" />
@@ -22,6 +29,7 @@ import NextButton from './NextButton.vue';
 import PrevButton from './PrevButton.vue';
 import LastPageButton from './LastPageButton.vue';
 import FirstPageButton from './FirstPageButton.vue';
+import LanguageToggler from './LanguageToggler.vue';
 
 
 export default {
@@ -32,6 +40,7 @@ export default {
     PrevButton,
     LastPageButton,
     FirstPageButton,
+    LanguageToggler,
   },
   props: {
     msg: String,
@@ -48,3 +57,5 @@ export default {
   }
 }
 </script>
+
+

@@ -1,17 +1,18 @@
 <template>
   <div class="rounded-md uppercase font-bold p-1 text-center" :class="classColor[typeName]">
-    <h4>{{typeName}}</h4>
+    <h4>{{language[getLanguage][typeName]}}</h4>
   </div>
 </template>
 
 <script>
-
+import { mapGetters } from "vuex";
 
 export default {
   name: 'Type',
   props: {
     typeName: String,
   },
+  computed: mapGetters(["getLanguage"]),
   data() {
     return {
       classColor: {
@@ -34,6 +35,32 @@ export default {
         psychic: 'bg-pink-600 text-white',
         shadow: 'bg-gray-700 text-white',
         water: 'bg-blue-500 text-white'
+      },
+      language: {
+        en: {
+          [this.typeName]: this.typeName
+        },
+        es: {
+          grass: "hierba",
+          fire: "fuego",
+          poison: "veneno",
+          normal: this.typeName,
+          fighting: "lucha",
+          flying: "volador",
+          ground: "tierra",
+          rock: "roca",
+          bug: "insecto",
+          ghost: "fantasma",
+          steel: "acero",
+          dragon: this.typeName,
+          dark: "oscuro",
+          fairy: "hada",
+          ice: "hielo",
+          psychic: "psiquico",
+          shadow: "sombra",
+          water: "agua",
+          electric: "electrico",
+        }
       }
     };
   }

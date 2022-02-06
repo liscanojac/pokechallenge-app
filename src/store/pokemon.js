@@ -8,6 +8,7 @@ const state = {
   totalPages: 0,
   pokemonDetails: {},
   loading: false,
+  language: 'en',
 };
 
 const getters = {
@@ -16,6 +17,7 @@ const getters = {
   getTotalPages: (state) => state.totalPages,
   getLoading: (state) => state.loading,
   getPokemonDetails: (state) => state.pokemonDetails,
+  getLanguage: (state) => state.language,
 };
 
 const actions = {
@@ -47,7 +49,9 @@ const actions = {
         image_back: pokemonFullDetails.sprites.back_default,
         types: pokemonFullDetails.types.map(type => type.type),
         weight: pokemonFullDetails.weight,
+        weight_kgs: Math.round(pokemonFullDetails.weight * 0.45),
         height: pokemonFullDetails.height,
+        height_cms: Math.round(pokemonFullDetails.height * 30.48),
         // descriptionUrl: pokemonFullDetails.species.url,
       };
       
@@ -122,6 +126,8 @@ const actions = {
       is_legendary: fullDescription.is_legendary,
       is_mythical: fullDescription.is_mythical,
       shape: fullDescription.shape.name,
+      height_cms: Math.round(pokemonFullDetails.height * 30.48),
+      weight_kgs: Math.round(pokemonFullDetails.weight * 0.45),
     };
 
     commit("setPokemonDetails", pokemonUsefulDeatils);
@@ -129,6 +135,9 @@ const actions = {
   clearPokemonDetails({ commit }) {
     commit("setPokemonDetailsCleared");
   },
+  changeLanguage({ commit }) {
+    commit("switchLanguage");
+  }
 }
 
 const mutations = {
@@ -150,6 +159,7 @@ const mutations = {
   setInitialPage: (state) => state.page = 1,
   setLastPage: (state) => state.page = state.totalPages,
   switchLoading: (state) => state.loading = !state.loading,
+  switchLanguage: (state) => state.language === 'en' ? state.language = 'es' : state.language = 'en',
 }
 
 export default {

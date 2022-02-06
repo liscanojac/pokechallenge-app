@@ -9,16 +9,16 @@
         <h1 class="uppercase font-bold">{{pokemon.name}}</h1>
       </div>
       <div>
-        <h3>HT</h3>
+        <h3 class="uppercase">{{language[getLanguage].height}}</h3>
       </div>
       <div>
-        <h3>{{pokemon.height}} ft.</h3>
+        <h3>{{pokemon[language[getLanguage].height_unit_conversion]}} {{language[getLanguage].height_unit}}</h3>
       </div>
       <div>
-        <h3>WT</h3>
+        <h3 class="uppercase">{{language[getLanguage].weight}}</h3>
       </div>
       <div>
-        <h3>{{pokemon.weight}} lbs.</h3>
+        <h3>{{pokemon[language[getLanguage].weight_unit_conversion]}} {{language[getLanguage].weight_unit}}</h3>
       </div>
       <div :key="type.url" v-for="type in pokemon.types">
         <Type :typeName="type.name" />
@@ -31,6 +31,7 @@
 
 <script>
 import Type from './Type.vue';
+import { mapGetters } from "vuex";
 
 export default {
   name: 'PokeCard',
@@ -39,6 +40,29 @@ export default {
   },
   components: {
     Type
+  },
+  computed: mapGetters(["getLanguage"]),
+  data() {
+    return {
+      language: {
+        en: {
+          height: "height",
+          height_unit: "ft.",
+          weight: "weight",
+          weight_unit: "lbs.",
+          weight_unit_conversion: "weight",
+          height_unit_conversion: "height",
+        },
+        es: {
+          height: "altura",
+          height_unit: "cms.",
+          weight: "peso",
+          weight_unit: "kgs",
+          weight_unit_conversion: "weight_kgs",
+          height_unit_conversion: "height_cms",
+        }
+      }
+    }
   }
 }
 </script>
