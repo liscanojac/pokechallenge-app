@@ -1,5 +1,5 @@
 <template>
-  <button class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4" @click="{
+  <button class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4" :class="getLoading && 'cursor-wait'" @click="{
     nextPage();
     fetchPokemon(getPage);
     }">{{buttonType}}</button>
@@ -16,7 +16,7 @@ export default {
   methods: {
     ...mapActions(["nextPage", "prevPage", "initialPage", "lastPage", "fetchPokemon"]),
   },
-  computed: mapGetters(["getPage"])
+  computed: mapGetters(["getPage", "getLoading"])
 }
 </script>
 

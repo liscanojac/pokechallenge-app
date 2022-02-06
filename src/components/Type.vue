@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md uppercase font-bold py-1" :class="classColor[typeName]">
+  <div class="rounded-md uppercase font-bold p-1" :class="classColor[typeName]">
     <h4>{{typeName}}</h4>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
         fire: 'bg-red-500 text-white',
         grass: 'bg-green-400 text-white',
         poison: 'bg-purple-800 text-white',
-        normal: 'text-black ring-2 ring-black',
+        normal: 'text-black ring-2 ring-inset ring-black',
         fighting: 'bg-pink-300 text-white',
         flying: 'bg-blue-200 text-black',
         ground: 'bg-yellow-600 text-white',
@@ -32,7 +32,8 @@ export default {
         fairy: 'bg-pink-200 text-black',
         ice: 'bg-indigo-200 text-black',
         psychic: 'bg-pink-600 text-white',
-        shadow: 'bg-gray-700 text-white'
+        shadow: 'bg-gray-700 text-white',
+        water: 'bg-blue-500 text-white'
       }
     };
   }

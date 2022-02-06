@@ -7,17 +7,20 @@ const state = {
   totalPokemon: 0,
   totalPages: 0,
   pokemonDetails: {},
+  loading: false,
 };
 
 const getters = {
   getPokemon: (state) => state.pokemon,
   getPage: (state) => state.page,
   getTotalPages: (state) => state.totalPages,
+  getLoading: (state) => state.loading,
 };
 
 const actions = {
   async fetchPokemon({ commit }, page) {
     let offset = (page * state.page_limit) - state.page_limit;
+    commit("switchLoading");
 
     const response = await axios(`https://pokeapi.co/api/v2/pokemon?limit=${state.page_limit}&offset=${offset}`)
       .then(res => res.data.results)
@@ -48,6 +51,7 @@ const actions = {
       pokemons.push(pokemonUsefulDeatils);
     }
     commit("setPokemon", pokemons);
+    commit("switchLoading");
   },
   nextPage({ commit }) {
     commit("setNextPage");
@@ -133,6 +137,7 @@ const mutations = {
   setPokemonDetailsCleared: (state) => state.pokemonDetails = {},
   setInitialPage: (state) => state.page = 1,
   setLastPage: (state) => state.page = state.totalPages,
+  switchLoading: (state) => state.loading = !state.loading,
 }
 
 export default {
