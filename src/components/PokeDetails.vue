@@ -23,19 +23,44 @@
           </div>
           <div class="col-span-2 md:col-span-1">
             <div class="grid grid-col-2 gap-2">
-              <div class="col-span-2 w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase">Type</div>
+              <div class="col-span-2 w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase">
+                <h4>Type</h4>
+              </div>
               <div :key="type.url" v-for="type in getPokemonDetails.types">
                 <Type :typeName="type.name" />
               </div>
-              <div class="col-span-2 w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase">Ability</div>
+              <div class="col-span-2 w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase">
+                <h4>Ability</h4>
+              </div>
               <div :key="ability.url" v-for="ability in getPokemonDetails.abilities">
                 <Ability :abilityName="ability.name" />
               </div>
             </div>
           </div>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 w-full mb-4 gap-3">
+          <div>
+            <div class="w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase mb-2">
+              <h4>Happiness</h4>
+            </div>
+            <div class="h-3 relative">
+              <div class="w-full h-full bg-gray-200 absolute"></div>
+              <div class="h-full bg-green-500 absolute" :style="{'width':getPokemonDetails.base_happiness + '%'}"></div>
+            </div>
+          </div>
+          <div>
+            <div class="w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase mb-2">
+              <h4>Capture rate</h4>
+            </div>
+            <div class="h-3 relative">
+              <div class="w-full h-full bg-gray-200 absolute"></div>
+              <div class="h-full bg-orange-500 absolute" :style="{'width':getPokemonDetails.capture_rate + '%'}"></div>
+            </div>
+          </div>
+        </div>
         <div class="w-full p-4 text-lg">
           <p>{{getPokemonDetails.description_en}}</p>
+          
         </div>
       </div>
     </div>

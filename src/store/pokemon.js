@@ -95,7 +95,7 @@ const actions = {
 
     let full_en_description = fullDescription.flavor_text_entries.find(entry => entry.language.name === "en");
 
-    let description_en = full_en_description.flavor_text.replace(/(\r\n|\n|\r)/gm, " ");
+    let description_en = full_en_description.flavor_text.replace(/(\r\n|\n|\r|\f)/gm, " ");
 
     let full_es_description = fullDescription.flavor_text_entries.find(entry => entry.language.name === "es");
 
