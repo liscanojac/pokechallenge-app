@@ -89,6 +89,8 @@ const actions = {
   },
   async fetchPokemonDetails({ commit }, id) {
 
+    commit("switchLoading");
+
     const pokemonFullDetails = await axios(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then(res => res.data)
       .catch(err => console.log(err));
@@ -118,8 +120,8 @@ const actions = {
       types: pokemonFullDetails.types.map(type => type.type),
       weight: pokemonFullDetails.weight,
       height: pokemonFullDetails.height,
-      base_happiness: fullDescription.base_happiness,
-      capture_rate: fullDescription.capture_rate,
+      base_happiness: fullDescription.base_happiness > 100 ? 100 : fullDescription.base_happiness,
+      capture_rate: fullDescription.capture_rate > 100 ? 100 : fullDescription.capture_rate,
       description_en,
       description_es,
       growth_rate: fullDescription.growth_rate.name,
@@ -132,24 +134,25 @@ const actions = {
     let pokemonAbilities_es = [];
 
     for (let i = 0; i < pokemonUsefulDeatils.abilities.length; i++) {
-      let pokemonAbility_es = await axios(pokemonUsefulDeatils.abilities[i].url)
+      let pokemonAbilities_allLanguages = await axios(pokemonUsefulDeatils.abilities[i].url)
         .then(res => res.data.names)
         .catch(err => console.log(err));
       
-      pokemonAbility_es = pokemonAbility_es.find(ability => ability.language.name === "es");
-      let pokemonUsefulAbility_es = {
-        name:pokemonAbility_es.name,
-        url: pokemonAbility_es.language.url
+      let fullPokemonAbility_es = pokemonAbilities_allLanguages.find(ability => ability.language.name === "es");
+
+      let pokemonAbility_es_usefulProps = {
+        name:fullPokemonAbility_es.name,
+        url: fullPokemonAbility_es.language.url
       }
-      pokemonAbilities_es.push(pokemonUsefulAbility_es);
+      pokemonAbilities_es.push(pokemonAbility_es_usefulProps);
     }
-    // console.log(pokemonAbilities_es);
     pokemonUsefulDeatils = {
       ...pokemonUsefulDeatils,
       abilities_es: pokemonAbilities_es
     }
 
     commit("setPokemonDetails", pokemonUsefulDeatils);
+    commit("switchLoading");
   },
   clearPokemonDetails({ commit }) {
     commit("setPokemonDetailsCleared");
