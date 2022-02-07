@@ -17,5 +17,4 @@ describe('Vue store', () => {
     };
     expect(store.state).toEqual({ pokemon: initialState });
   });
-
 });

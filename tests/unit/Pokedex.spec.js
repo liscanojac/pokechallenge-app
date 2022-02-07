@@ -1,47 +1,22 @@
-import { shallowMount, mount } from "@vue/test-utils";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import { mount } from "@vue/test-utils";
 import Pokedex from '@/components/Pokedex.vue';
-import store from '@/store';
+import pokemonStore from '@/store/pokemon.js';
 
-describe('Pokedex.vue', () => {
+Vue.use(Vuex);
+const store = new Vuex.Store(pokemonStore);
 
-  it('renders props.msg correctly', () => {
+test('renders props.msg correctly', () => {
 
-    const msg = 'test msg';
-    const wrapper = shallowMount(Pokedex, {
-      props: { msg },
-      global: {
-        plugins: [store]
-      }
-    });
-    const pokedexTitle = wrapper.get('[data-test="pokedex-title"]')
-    expect(pokedexTitle.text()).toContain(msg);
+  const msg = 'test msg';
+  const wrapper = mount(Pokedex, {
+    store,
+    props: { msg }
   });
+  const pokedexTitle = wrapper.get('[data-test="pokedex-title"]');
 
-  it('renders props.msgTitle correctly', () => {
-
-    const msgTitle ='test msgTitle';
-    const wrapper = shallowMount(Pokedex, {
-      props: { msgTitle },
-      global: {
-        plugins: [store]
-      }
-    });
-    const pokedexTitle = wrapper.get('[data-test="pokedex-title"]')
-    expect(pokedexTitle.text()).toContain(msgTitle);
-  });
-
-  // it('changes page correctly', () => {
-
-  //   const wrapper = mount(Pokedex, {
-  //     global: {
-  //       plugins: [store]
-  //     }
-  //   });
-
-  //   const nextPageButton = wrapper.get('#nextPageButton');
-
-  //   nextPageButton.trigger('click');
-
-  //   expect(store.state.pokemon.page).toBe(2);
-  // })
+  expect(pokedexTitle.text()).toBe(msg);
 });
+
+
