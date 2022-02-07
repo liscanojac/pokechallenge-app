@@ -13,7 +13,8 @@ describe('Pokedex.vue', () => {
         plugins: [store]
       }
     });
-    expect(wrapper.text()).toContain(msg);
+    const pokedexTitle = wrapper.get('[data-test="pokedex-title"]')
+    expect(pokedexTitle.text()).toContain(msg);
   });
 
   it('renders props.msgTitle correctly', () => {
@@ -25,7 +26,8 @@ describe('Pokedex.vue', () => {
         plugins: [store]
       }
     });
-    expect(wrapper.text()).toContain(msgTitle);
+    const pokedexTitle = wrapper.get('[data-test="pokedex-title"]')
+    expect(pokedexTitle.text()).toContain(msgTitle);
   });
 
   // it('changes page correctly', () => {
