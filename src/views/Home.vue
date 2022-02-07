@@ -1,7 +1,5 @@
 <template>
   <div class="display flex flex-col justify-center items-center mt-12 px-6">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Pokedex :msg="language[getLanguage]['msg']" msgTitle="Pokémon" />
   </div>
 </template>

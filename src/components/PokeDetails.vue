@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-emerald-400 rounded-xl p-4">
     <div class="flex justify-center mb-2">
-      <div class="w-full md:w-3/4 lg:w-1/2 bg-white text-center border-4 border-gray-400">
+      <div class="w-full md:w-3/4 lg:w-1/2 bg-white text-center border-4 border-gray-400 ring-2 ring-inset ring-gray-300">
         <h1 class="font-pokedex-title text-2xl uppercase py-2">
           {{getPokemonDetails.name}}
         </h1>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="flex justify-center">
-      <div class="flex flex-col items-center p-4 bg-white border-2 border-yellow-500 mb-2 w-full md:w-3/4 rounded-lg shadow-lg">
+      <div class="flex flex-col items-center p-4 bg-white border-4 border-yellow-500 mb-2 w-full md:w-3/4 rounded-lg shadow-lg ring-2 ring-inset ring-orange-300">
         <img class="h-64 mb-10" :src="getPokemonDetails.svg_image || getPokemonDetails.official_artwork" alt="pokemon-image">
         <div class="grid grid-cols-1 md:grid-cols-2 w-full mb-4 gap-y-3">
           <div class="col-span-2 md:col-span-1">

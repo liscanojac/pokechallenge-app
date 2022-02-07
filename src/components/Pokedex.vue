@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-emerald-400 rounded-xl p-4">
     <div class="flex justify-center mb-2">
-      <div class="w-full md:w-3/4 lg:w-1/2 bg-white text-center border-4 border-gray-400">
+      <div class="w-full md:w-3/4 lg:w-1/2 bg-white text-center border-4 border-gray-400 ring-2 ring-inset ring-gray-300">
         <h1 class="font-pokedex-title text-2xl py-2">
           {{msg}} <span class="uppercase">{{msgTitle}}</span>
         </h1>
@@ -14,10 +14,10 @@
       <PokeCard :pokemon="pokemon" />
     </div>
     <div class="grid grid-cols-4 text-center w-full md:w-3/4 mx-auto">
-      <FirstPageButton buttonType="firstPage" />
-      <PrevButton buttonType="prevPage" />
-      <NextButton buttonType="nextPage" />
-      <LastPageButton buttonType="lastPage" />
+      <FirstPageButton />
+      <PrevButton />
+      <NextButton />
+      <LastPageButton />
     </div>
   </div>
 </template>

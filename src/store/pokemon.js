@@ -128,6 +128,7 @@ const actions = {
       is_legendary: fullDescription.is_legendary,
       is_mythical: fullDescription.is_mythical,
       shape: fullDescription.shape.name,
+      generation: fullDescription.generation.name,
       height_cms: Math.round(pokemonFullDetails.height * 30.48),
       weight_kgs: Math.round(pokemonFullDetails.weight * 0.45),
     };
@@ -166,7 +167,7 @@ const mutations = {
   setPokemon: (state, pokemon) => (state.pokemon = pokemon),
   setNextPage: (state) => {
     if (state.page < state.totalPages) {
-      state.page = state.page + 1;
+      return state.page = state.page + 1;
     }
   },
   setPrevPage: (state) => {

@@ -1,6 +1,5 @@
 <template>
-  <router-link class="flex flex-col md:flex-row md:justify-between items-center p-4 bg-white border-2 border-yellow-500 mb-2 w-full md:w-3/4 rounded-lg shadow-lg" :to="{ name: 'Details', params: { id: pokemon.id } }">
-  <!-- <div class="flex flex-col md:flex-row md:justify-between items-center p-4 bg-white border-2 border-yellow-500 mb-2 w-full md:w-3/4 rounded-lg shadow-lg"> -->
+  <router-link class="flex flex-col md:flex-row md:justify-between items-center p-4 bg-white border-4 border-yellow-500 mb-2 w-full md:w-3/4 rounded-lg shadow-lg" :to="{ name: 'Details', params: { id: pokemon.id } }">
     <div class="grid grid-cols-2 gap-2 text-center order-2 md:order-1">
       <div>
         <h3>No {{pokemon.id}}</h3>
