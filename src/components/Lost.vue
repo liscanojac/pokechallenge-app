@@ -14,7 +14,7 @@
       <div class="my-6 flex justify-center">
         <div class="flex flex-col items-center w-full bg-white border-4 border-yellow-500 md:w-3/4 rounded-lg shadow-lg ring-2 ring-inset ring-orange-300 p-4">
           <img src="@/assets/lost.png" alt="lost-img">
-          <router-link class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4 px-7 ml-1 mr-2 flex justify-center mt-2 uppercase font-pokedex font-bold tracking-wider" :to="{ name: 'Home' }">
+          <router-link class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4 px-7 ml-1 mr-2 flex justify-center mt-2 uppercase font-pokedex font-bold" :class="[getLanguage === 'en' && 'tracking-widest']" :to="{ name: 'Home' }">
             {{language[getLanguage].homeBtn}}
           </router-link>
         </div>
