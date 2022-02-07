@@ -129,6 +129,25 @@ const actions = {
       height_cms: Math.round(pokemonFullDetails.height * 30.48),
       weight_kgs: Math.round(pokemonFullDetails.weight * 0.45),
     };
+    let pokemonAbilities_es = [];
+
+    for (let i = 0; i < pokemonUsefulDeatils.abilities.length; i++) {
+      let pokemonAbility_es = await axios(pokemonUsefulDeatils.abilities[i].url)
+        .then(res => res.data.names)
+        .catch(err => console.log(err));
+      
+      pokemonAbility_es = pokemonAbility_es.find(ability => ability.language.name === "es");
+      let pokemonUsefulAbility_es = {
+        name:pokemonAbility_es.name,
+        url: pokemonAbility_es.language.url
+      }
+      pokemonAbilities_es.push(pokemonUsefulAbility_es);
+    }
+    // console.log(pokemonAbilities_es);
+    pokemonUsefulDeatils = {
+      ...pokemonUsefulDeatils,
+      abilities_es: pokemonAbilities_es
+    }
 
     commit("setPokemonDetails", pokemonUsefulDeatils);
   },

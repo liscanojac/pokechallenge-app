@@ -39,7 +39,7 @@
               <div class="col-span-2 w-full bg-gray-500 text-center text-lg text-white rounded-lg px-2 font-medium uppercase">
                 <h4>{{language[getLanguage].ability_title}}</h4>
               </div>
-              <div :key="ability.url" v-for="ability in getPokemonDetails.abilities">
+              <div :key="ability.url" v-for="ability in getPokemonDetails[language[getLanguage].ability_for_language]">
                 <Ability :abilityName="ability.name" />
               </div>
             </div>
@@ -103,6 +103,7 @@ export default {
           shape_title: "shape",
           type_title: "type",
           ability_title: "ability",
+          ability_for_language: "abilities",
           happiness_title: "happiness",
           capture_rate_title: "capture rate",
         },
@@ -118,6 +119,7 @@ export default {
           shape_title: "forma",
           type_title: "tipo",
           ability_title: "habilidad",
+          ability_for_language: "abilities_es",
           happiness_title: "felicidad",
           capture_rate_title: "probabilidad de captura"
         }
