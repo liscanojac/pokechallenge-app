@@ -1,5 +1,5 @@
 <template>
-  <button id="nextPageButton" class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4 ml-1 mr-2 flex justify-center" :class="getLoading && 'cursor-wait'" @click="{
+  <button id="nextPageButton" :disabled="getLoading" class="bg-yellow-200 border-4 border-yellow-600 rounded-md py-4 ml-1 mr-2 flex justify-center" :class="getLoading && 'cursor-wait'" @click="{
     nextPage();
     fetchPokemon(getPage);
     }">
