@@ -1,6 +1,6 @@
 <template>
-  <div class="rounded-md uppercase font-bold p-1 text-center" :class="classColor[typeName]">
-    <h4>{{language[getLanguage][typeName]}}</h4>
+  <div id="type-div" class="rounded-md uppercase font-bold p-1 text-center" :class="classColor[typeName]">
+    <h4 id="type-title">{{language[getLanguage][typeName]}}</h4>
   </div>
 </template>
 
