@@ -2,7 +2,7 @@
   <label for="toggle-example" class="flex items-center cursor-pointer relative mb-4">
     <span class="mr-3 text-gray-900 text-sm font-medium">EN</span>
     <input :checked="getLanguage === 'es'" @click="changeLanguage()" type="checkbox" id="toggle-example" class="sr-only">
-    <div class="toggle-bg bg-emerald-200 border-2 border-gray-200 h-6 w-11 rounded-sm"></div>
+    <div id="toggle-bg" class="toggle-bg bg-emerald-200 border-2 border-gray-200 h-6 w-11 rounded-sm"></div>
     <span class="ml-3 text-gray-900 text-sm font-medium">ESP</span>
   </label>
 </template>
